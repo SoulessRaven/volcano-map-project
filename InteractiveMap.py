@@ -125,7 +125,7 @@ fg_cities = folium.FeatureGroup(name="All Cities", show=False,)
 cities_country_group = {}
 city_cluster = MarkerCluster()
 
-for _, row in df_cities.iterrows():
+for _, row in df_cities.groupby('country').head(150).iterrows():
     popup_html_cities = f"""
     <b>City:</b> {row['city']}<br>
     <b>Country:</b> {row['country']}<br>
@@ -308,5 +308,6 @@ map.get_root().html.add_child(folium.Element(f"""
     }});
 </script>
 """))
+#map.get_root().render()
 
 map.save(os.path.join("docs", "InteractiveMap.html"))

@@ -222,7 +222,6 @@ map.get_root().html.add_child(folium.Element(f"""
     <select id="layer-select" style="width: 200px;">
         <option value="" disabled selected>-- Select Country --</option>
         <option value="__none__">-- None --</option>
-        <option value="__all__">-- All Countries --</option>
         {''.join(f'<option value="{name}">{name}</option>' for name in all_country_names)}
     </select>
 </div>
@@ -257,9 +256,7 @@ map.get_root().html.add_child(folium.Element(f"""
                     const label = parent.textContent.trim();
 
                     let shouldBeChecked = false;
-                    if (selected === "__all__") {{
-                        shouldBeChecked = true;
-                    }} else if (selected === "__none__") {{
+                    if (selected === "__none__") {{
                         shouldBeChecked = false;
                     }} else if (selected) {{
                         shouldBeChecked = label.toLowerCase().includes(selected.toLowerCase());

@@ -309,4 +309,4 @@ map.get_root().html.add_child(folium.Element(f"""
 </script>
 """))
 
-map.save("InteractiveMap.html")
+map.save(os.path.join("docs", "InteractiveMap.html"))
